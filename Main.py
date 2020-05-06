@@ -16,7 +16,7 @@ class Manager:
         for row in csv_reader:
             if index != 0 and not (str(row[1]) in self.countries):
                 self.countries[str(row[1])] = Country(row[1], row[4:])
-            elif str(row[1]) in self.countries:  # Need to take care of duplicates in the case of territories
+            elif index != 0 and str(row[1]) in self.countries:  # Need to take care of duplicates in the case of territories
                 self.countries[str(row[1])].merge(row[4:])
             else:
                 self.dates = row[4:]
